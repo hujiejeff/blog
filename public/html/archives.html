@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="layout.css">
+    <title>HUJIE 的博客</title>
+    <style>
+        .about-me-link{
+            color:#636b6f;
+        }
+        .about-me-link:hover{
+            color: black;
+            text-decoration: underline;
+        }
+        .left-div{
+            height: 300px;
+        }
+        .right-div{
+            margin-left: 15px;
+            text-align: center;
+            padding: 40px 20px 0;
+            background-color: white;
+        }
+        .log-div{
+            background-color: #262a30;
+            height: 100px;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .log-div>div~div{
+            margin-top: 10px;
+            font-size: 10px;
+            font-weight: 200;
+        }
+        .nav-div{
+            padding: 10px;
+            font-size: 11px;
+            background-color: white;
+        }
+        .nav-div li{
+            line-height: 2.0;
+        }
+        .li-span{
+            margin-left: 10px;
+        }
+        .auth-div{
+            background-color: white;
+            margin-top: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+        .img-my{
+            display: block;
+            margin: 0 auto;
+            max-width: 100px;
+        }
+        .auth-div p{
+            margin: 5px;
+        }
+        .auth-name{
+            color: black;
+        }
+        .motto{
+            font-size: 10px;
+        }
+        .rss{
+            font-size: 12px;
+            border-top: 1px dotted #ccc;
+            border-bottom: 1px dotted #ccc;
+        }
+        .rss a{
+            color: #fc6423;
+        }
+        .rss a:hover{
+            color: #ff6666;
+        }
+        .about{
+            margin-top: 10px;
+        }
+        .about a:hover{
+            background-color: #eee;
+            border-radius: 1px;
+        }
+
+        section{
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        footer{
+            text-align: center;
+            height: auto;
+            margin-top: 100px;
+            margin-left: 360px;
+        }
+        .archives{
+            margin-top: -10px;
+            border-left:3px solid #eee;
+        }
+        .years{
+        }
+        .articles>div{
+            margin-top: 50px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+        }
+        .title{
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<main class="row">
+    <div class="col-2 col-offset-2 left-div">
+        <div class="log-div">
+            <div>
+                HUJIE'S BLOG
+            </div>
+            <div>No BUG,No Get</div>
+        </div>
+        <div class="nav-div">
+            <ul>
+                <li><a href="#"><i class="fa fa-fw fa-home"></i><span class="li-span">首页</span></a></li>
+                <li><a href=""><i class="fa  fa-fw fa-archive"></i><span class="li-span">归档</span></a></li>
+                <li><a href=""><i class="fa  fa-fw fa-tags"></i><span class="li-span">标签</span></a></li>
+                <li><a href=""><i class="fa  fa-fw fa-search"></i><span class="li-span">搜索</span></a></li>
+            </ul>
+        </div>
+        <div class="auth-div">
+            <div>
+                <img src="../img/m3.jpg" alt="作者" class="img-my">
+                <p class="auth-name">Hujie</p>
+                <p class="motto">慎独</p>
+            </div>
+            <nav class="sub row">
+                <div class="col-4"><a href="#">188</a><br>
+                    日志</div>
+                <div class="col-4"><a href="#">7</a><br>
+                    分类</div>
+                <div class="col-4"><a href="#">9</a><br>
+                    标签</div>
+            </nav>
+            <div class="rss">
+                <a href="#">
+                    <i class="fa fa-rss">RSS</i>
+                </a>
+            </div>
+            <div class="about row">
+                <a href="#" class="col-6"><i class="fa fa-github"></i>  GitHub</a>
+                <a href="#" class="col-6"><i class="fa fa-google"></i>  Google+</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 right-div">
+        <section>
+            <span class="circle-big"></span>
+            <span style="vertical-align: middle">&nbsp;&nbsp;非常好! 目前共计 183 篇日志。 继续努力。</span>
+            <div class="archives">
+                <div class="years">
+                    <br>
+                    <br>
+                <span class="circle-mid"></span>
+                <span class="year">&nbsp;&nbsp;2016</span>
+                    <div class="articles">
+                        <div>
+                        <span class="circle-sml"></span>
+                        <span class="title">&nbsp;&nbsp;03-22 使用 Travis CI 自动更新 GitHub Pages</span>
+                        </div>
+                        <div>
+                            <span class="circle-sml"></span>
+                            <span class="title">&nbsp;&nbsp;03-22 使用 Travis CI 自动更新 GitHub Pages</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="years">
+                    <br>
+                    <br>
+                    <span class="circle-mid"></span>
+                    <span class="year">&nbsp;&nbsp;2016</span>
+                </div>
+            </div>
+        </section>
+        <nav class="pagenation">
+            <span>1</span>
+            <a href="#">2</a>
+            <span>...</span>
+            <a href="#">10</a>
+            <a href="#"><i class="fa fa-angle-right"></i></a>
+        </nav>
+    </div>
+    <footer class="col-6">
+        <a href="#" class="about-me-link">@hujiejeff</a>
+    </footer>
+</main>
+<div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    50%
+</div>
+</body>
+</html>
