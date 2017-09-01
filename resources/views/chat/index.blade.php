@@ -52,10 +52,11 @@
             padding: 15px;
         }
 
-        .chat-min{
+        .chat-min {
             right: 45%;
             bottom: -60px;
         }
+
         .chat-list {
             position: fixed;
             right: 0;
@@ -78,9 +79,11 @@
             width: 95%;
             background-color: #f7f7f7;
         }
-        .chat-list > main{
+
+        .chat-list > main {
             height: 100%;
         }
+
         #state {
             background-color: white;
             color: #3fdd86;
@@ -161,24 +164,28 @@
         .comment p:last-child {
             font-size: 10px;
         }
-        .chat-windows{
+
+        .chat-windows {
             position: fixed;
             right: 400px;
             width: 802px;
-            height:522px;
+            height: 522px;
             bottom: 0;
             box-shadow: 0 0 40px #bdbdbd;
         }
-        .chat-windows::after{
+
+        .chat-windows::after {
             clear: both;
         }
-        .chat-window-toolbar{
+
+        .chat-window-toolbar {
             float: left;
             width: 200px;
             height: 522px;
             background-color: #D9D9D9;
         }
-        .chat-now{
+
+        .chat-now {
             height: 50px;
             margin: 5px;
             padding: 4px;
@@ -186,33 +193,41 @@
             cursor: pointer;
             font-size: 16px;
         }
-        .chat-now:hover>div:last-child{
+
+        .chat-now:hover > div:last-child {
             display: inline-block;
         }
-        .chat-now::after{
+
+        .chat-now::after {
             clear: both;
         }
-        .chat-now>div{
+
+        .chat-now > div {
             float: left;
         }
-        .chat-now>div>img{
+
+        .chat-now > div > img {
             width: 40px;
             border-radius: 40px;
         }
-        .chat-now>div>span{
+
+        .chat-now > div > span {
             margin-left: 10px;
             line-height: 2.5;
-            color:black;
+            color: black;
             background-color: inherit;
         }
-        .chat-now>div:last-child{
+
+        .chat-now > div:last-child {
             display: none;
             float: right;
             font-size: 18px;
         }
-        .chat-now>div:last-child:hover>span{
-            color:#c00;
+
+        .chat-now > div:last-child:hover > span {
+            color: #c00;
         }
+
         .chat-window {
             float: left;
             width: calc(100% - 200px);
@@ -292,12 +307,12 @@
             font-size: 12px;
             text-align: left;
         }
+
         .chat-message-meta-right {
             color: #999;
             font-size: 12px;
             text-align: right;
         }
-
 
         .chat-message-desc {
             margin-top: 5px;
@@ -359,9 +374,11 @@
             overflow: hidden;
             border-width: 10px;
         }
-        .chat-window > footer{
+
+        .chat-window > footer {
             height: 131px;
         }
+
         .chat-window > footer > div {
             padding: 10px 15px;
             font-size: 18px;
@@ -384,21 +401,25 @@
         .chat-window > footer::after {
             clear: both;
         }
-        .chat-input textarea{
+
+        .chat-input textarea {
             border: none;
             width: 100%;
             height: 50px;
             resize: none;
         }
-        .chat-input textarea:focus{
+
+        .chat-input textarea:focus {
             outline: none;
             resize: none;
         }
-        .chat-send{
+
+        .chat-send {
             padding: 0;
         }
-        .chat-send a{
-           float: right;
+
+        .chat-send a {
+            float: right;
             background-color: #5FB878;
             color: white;
             padding: 2px 20px;
@@ -407,13 +428,28 @@
             margin: 0 3px;
             font-weight: 300;
         }
+
         .chat-state-mes {
-            font-size:xx-small;
+            font-size: xx-small;
             border: 1px solid gainsboro;
             border-radius: 10px;
             width: 170px;
             text-align: center;
             margin: 2px auto;
+        }
+        .chat-active{
+            display: block;
+            background-color: #F3F3F3;
+        }
+        .chat-no-active{
+            display: block;
+            background-color: #D9D9D9;
+        }
+        .chat-no-view{
+            display: none;
+        }
+        .chat-no-active:hover{
+            background-color: #e2e2e2;
         }
     </style>
 </head>
@@ -490,80 +526,80 @@
 </div>
 <div class="chat-windows" style="display: none;">
     <div class="chat-window-toolbar">
-        <div class="chat-now" style="background-color: #F3F3F3" onclick="tab_chat_window(this)" id="common-chat-a">
+        <div class="chat-now" onclick="tab_chat_window(this)" id="common-chat-a">
             <div><img src="{{asset('img/ww.jpg')}}" alt=""></div>
             <div><span>群聊</span></div>
-            <div><span class="fa fa-times-circle"></span></div>
+            <div><span class="fa fa-times-circle" onclick="close_now_window(this,event)"></span></div>
         </div>
         {{--<div class="chat-now" id="chat-now-1" onclick="tab_chat_window(this)">--}}
-            {{--<div><img src="{{asset('img/ww.jpg')}}" alt=""></div>--}}
-            {{--<div><span class="chat-people-name"></span></div>--}}
-            {{--<div><span class="fa fa-times-circle"></span></div>--}}
+        {{--<div><img src="{{asset('img/ww.jpg')}}" alt=""></div>--}}
+        {{--<div><span class="chat-people-name"></span></div>--}}
+        {{--<div><span class="fa fa-times-circle"></span></div>--}}
         {{--</div>--}}
     </div>
-    <div class="chat-window" id="chat_a">
-    <header>
-        <div class="chat-window-img"><img src="{{asset('img/ww.jpg')}}" alt=""></div>
-        <div class="chat-window-name"><span>群聊</span></div>
-        <div class="chat-window-meta">
-            <span class="fa fa-window-minimize" onclick="chat_window_min()"></span>
-            <span class="fa fa-window-maximize" onclick="chat_window_max()"></span>
-            <span class="fa fa-times" onclick="chat_window_close()"></span>
-        </div>
-    </header>
-    <main>
-    </main>
-    <footer>
-        <div>
-            <div class="chat-menus">
-                <div class="chat-menu"><span class="fa fa-smile-o"></span></div>
-                <div class="chat-menu"><span class="fa fa-image"></span></div>
-                <div class="chat-menu"><span class="fa fa-file-o"></span></div>
+    <div class="chat-window" id="chat_a" style="display: block;">
+        <header>
+            <div class="chat-window-img"><img src="{{asset('img/ww.jpg')}}" alt=""></div>
+            <div class="chat-window-name"><span>群聊</span></div>
+            <div class="chat-window-meta">
+                <span class="fa fa-window-minimize" onclick="chat_window_min()"></span>
+                <span class="fa fa-window-maximize" onclick="chat_window_max()"></span>
+                <span class="fa fa-times" onclick="chat_window_close()"></span>
             </div>
-            <div class="chat-recorder">
-                <span class="fa fa-clock-o">  聊天记录</span>
+        </header>
+        <main>
+        </main>
+        <footer>
+            <div>
+                <div class="chat-menus">
+                    <div class="chat-menu"><span class="fa fa-smile-o"></span></div>
+                    <div class="chat-menu"><span class="fa fa-image"></span></div>
+                    <div class="chat-menu"><span class="fa fa-file-o"></span></div>
+                </div>
+                <div class="chat-recorder">
+                    <span class="fa fa-clock-o">  聊天记录</span>
+                </div>
             </div>
-        </div>
-        <div class="chat-input">
-            <textarea autofocus id="msg_box" onkeydown="confirm(event)" placeholder="按回车发送"></textarea>
-        </div>
-        <div class="chat-send">
-            <a href="javascript:void(0);" onclick="send()">发送</a>
-            <a href="javascript:void(0);">关闭</a>
-        </div>
-    </footer>
+            <div class="chat-input">
+                <textarea autofocus id="msg_box" onkeydown="confirm(event)" placeholder="按回车发送"></textarea>
+            </div>
+            <div class="chat-send">
+                <a href="javascript:void(0);" onclick="send()">发送</a>
+                <a href="javascript:void(0);">关闭</a>
+            </div>
+        </footer>
     </div>
     {{--<div class="chat-window" style="display: none" id="chat_1">--}}
-        {{--<header>--}}
-            {{--<div class="chat-window-img"><img src="{{asset('img/ww.jpg')}}" alt=""></div>--}}
-            {{--<div class="chat-window-name"><span class="chat-people-name"></span></div>--}}
-            {{--<div class="chat-window-meta">--}}
-                {{--<span class="fa fa-window-minimize"></span>--}}
-                {{--<span class="fa fa-window-maximize"></span>--}}
-                {{--<span class="fa fa-times"></span>--}}
-            {{--</div>--}}
-        {{--</header>--}}
-        {{--<main>--}}
-        {{--</main>--}}
-        {{--<footer>--}}
-            {{--<div>--}}
-                {{--<div class="chat-menus">--}}
-                    {{--<div class="chat-menu"><span class="fa fa-smile-o"></span></div>--}}
-                    {{--<div class="chat-menu"><span class="fa fa-image"></span></div>--}}
-                    {{--<div class="chat-menu"><span class="fa fa-file-o"></span></div>--}}
-                {{--</div>--}}
-                {{--<div class="chat-recorder">--}}
-                    {{--<span class="fa fa-clock-o">  聊天记录</span>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="chat-input">--}}
-                {{--<textarea autofocus class="msg_box_private" onkeydown="confirm_private(event,this)" placeholder="按回车发送"></textarea>--}}
-            {{--</div>--}}
-            {{--<div class="chat-send">--}}
-                {{--<a href="javascript:void(0);" onclick="send_private(this)">发送</a>--}}
-                {{--<a href="javascript:void(0);">关闭</a>--}}
-            {{--</div>--}}
-        {{--</footer>--}}
+    {{--<header>--}}
+    {{--<div class="chat-window-img"><img src="{{asset('img/ww.jpg')}}" alt=""></div>--}}
+    {{--<div class="chat-window-name"><span class="chat-people-name"></span></div>--}}
+    {{--<div class="chat-window-meta">--}}
+    {{--<span class="fa fa-window-minimize"></span>--}}
+    {{--<span class="fa fa-window-maximize"></span>--}}
+    {{--<span class="fa fa-times"></span>--}}
+    {{--</div>--}}
+    {{--</header>--}}
+    {{--<main>--}}
+    {{--</main>--}}
+    {{--<footer>--}}
+    {{--<div>--}}
+    {{--<div class="chat-menus">--}}
+    {{--<div class="chat-menu"><span class="fa fa-smile-o"></span></div>--}}
+    {{--<div class="chat-menu"><span class="fa fa-image"></span></div>--}}
+    {{--<div class="chat-menu"><span class="fa fa-file-o"></span></div>--}}
+    {{--</div>--}}
+    {{--<div class="chat-recorder">--}}
+    {{--<span class="fa fa-clock-o">  聊天记录</span>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="chat-input">--}}
+    {{--<textarea autofocus class="msg_box_private" onkeydown="confirm_private(event,this)" placeholder="按回车发送"></textarea>--}}
+    {{--</div>--}}
+    {{--<div class="chat-send">--}}
+    {{--<a href="javascript:void(0);" onclick="send_private(this)">发送</a>--}}
+    {{--<a href="javascript:void(0);">关闭</a>--}}
+    {{--</div>--}}
+    {{--</footer>--}}
     {{--</div>--}}
 </div>
 <script src="{{asset('js/jquery.min.js')}}"></script>
@@ -582,8 +618,8 @@
         });
     });
     $('.friend-group .comment').click(function () {
-            console.log(';x');
-            $('.chat-windows').show();
+        $('#common-chat-a').trigger('click');
+        $('#common-chat-a').removeClass('chat-no-view').removeClass('chat-no-active').addClass('chat-active');
     });
     $('.me').click(function () {
         $('.chat-list').animate({bottom: '0'}, 300);
@@ -592,41 +628,41 @@
         $('.me').animate({bottom: '0'}, 300);
         $('.chat-list').animate({bottom: '-522px'}, 400);
     });
-//    $('.fa-window-minimize').click(function () {
-//        $('.chat-windows').animate({bottom:'-'+$('.chat-windows').height()+'px'},300,function () {
-//            $('.chat-min').css('bottom','0');
-//            $('.chat-min').show();
-//        });
-//    });
+    //    $('.fa-window-minimize').click(function () {
+    //        $('.chat-windows').animate({bottom:'-'+$('.chat-windows').height()+'px'},300,function () {
+    //            $('.chat-min').css('bottom','0');
+    //            $('.chat-min').show();
+    //        });
+    //    });
     $('.chat-min').click(function () {
-        $('.chat-windows').animate({bottom:'0'},300);
+        $('.chat-windows').animate({bottom: '0'}, 300);
     });
-//    $('.fa-window-maximize').toggle(function () {
-//        $('.chat-windows').animate({width:'100%',height:'100%',bottom:'0',right:'0'},300);
-//        $('.chat-window>main').animate({scrollTop:$('.chat-window>main').height()},300);
-//    },function () {
-//        $('.chat-windows').animate({width:'802px',height:'522px',bottom:'0',right:'400px'},300);
-//        $('.chat-window>main').animate({scrollTop:$('.chat-window>main').height()},300);
-//    });
-//    $('.fa-times').click(function () {
-//        $('.chat-windows').hide(200);
-//        $('.chat-min').hide();
-//    });
+    //    $('.fa-window-maximize').toggle(function () {
+    //        $('.chat-windows').animate({width:'100%',height:'100%',bottom:'0',right:'0'},300);
+    //        $('.chat-window>main').animate({scrollTop:$('.chat-window>main').height()},300);
+    //    },function () {
+    //        $('.chat-windows').animate({width:'802px',height:'522px',bottom:'0',right:'400px'},300);
+    //        $('.chat-window>main').animate({scrollTop:$('.chat-window>main').height()},300);
+    //    });
+    //    $('.fa-times').click(function () {
+    //        $('.chat-windows').hide(200);
+    //        $('.chat-min').hide();
+    //    });
 </script>
 </body>
 </html>
 <script type="text/javascript">
     function chat_window_min() {
-        $('.chat-windows').animate({bottom:'-'+$('.chat-windows').height()+'px'},300,function () {
-            $('.chat-min').css('bottom','0');
+        $('.chat-windows').animate({bottom: '-' + $('.chat-windows').height() + 'px'}, 300, function () {
+            $('.chat-min').css('bottom', '0');
             $('.chat-min').show();
         });
     }
 
     function chat_window_max(obj) {
-        $('.chat-windows').animate({width:'100%',height:'100%',bottom:'0',right:'0'},300);
-        $('.chat-window>main').animate({scrollTop:$('.chat-window>main').height()},300);
-        $(obj).attr('onclick','chat_window_remax(this)');
+        $('.chat-windows').animate({width: '100%', height: '100%', bottom: '0', right: '0'}, 300);
+        $('.chat-window>main').animate({scrollTop: $('.chat-window>main').height()}, 300);
+        $(obj).attr('onclick', 'chat_window_remax(this)');
     }
 
     function chat_window_close() {
@@ -635,29 +671,54 @@
     }
 
     function chat_window_remax(obj) {
-        $('.chat-windows').animate({width:'802px',height:'522px',bottom:'0',right:'400px'},300);
-        $('.chat-window>main').animate({scrollTop:$('.chat-window>main').height()},300);
-        $(obj).attr('onclick','chat_window_max(this)');
+        $('.chat-windows').animate({width: '802px', height: '522px', bottom: '0', right: '400px'}, 300);
+        $('.chat-window>main').animate({scrollTop: $('.chat-window>main').height()}, 300);
+        $(obj).attr('onclick', 'chat_window_max(this)');
     }
     function open_chat(obj) {
         var chat_name = $(obj).children('div>p:first').html();
         $('.chat-windows').show();
-        $('.chat-now').eq(1).trigger('click');
-        console.log(chat_name);
-        $('#chat_'+$(obj).id+'.chat-window-name span').text('chat_name');
+        $('#chat-now-'+$(obj).attr('id')).show();
+        $('#chat-now-'+$(obj).attr('id')).trigger('click');
+        $('#chat_' + $(obj).id + '.chat-window-name span').text('chat_name');
     }
     function tab_chat_window(obj) {
-        $(obj).click(function () {
-            $('.chat-now').each(function () {
-                $(this).css('backgroundColor','#D9D9D9');
-            });
-            $(this).css('backgroundColor','#F3F3F3');
-        });
-        $('.chat-window').css('display','none');
+//        $('.chat-now').each(function () {
+//            $(this).css('backgroundColor', '#D9D9D9');
+//            $(this).removeClass('chat_active');
+//        });
+        $('.chat-windows').show();
+        $('.chat-active').removeClass('chat-no-view').removeClass('chat-active').addClass('chat-no-active');
+//        $(obj).css('backgroundColor', '#F3F3F3');
+        $(obj).removeClass('chat-no-view').removeClass('chat-no-active').addClass('chat-active');
+        $('.chat-window').css('display', 'none');
         let chat_now_id = $(obj).attr('id');
         console.log(chat_now_id);
-        let num = 'chat_'+chat_now_id.charAt(chat_now_id.length-1);
-        $('#'+num).css('display','block');
+        let num = 'chat_' + chat_now_id.charAt(chat_now_id.length - 1);
+        $('#' + num).css('display', 'block');
+    }
+    function close_now_window(obj,event) {
+        var id = $(obj).parents('.chat-now').attr('id');
+        var ids = id.charAt(id.length-1);
+        var obj_now;
+        var obj_window;
+        if(ids == 'a'){
+            obj_now = $('#common-chat-a');
+            obj_window = $('#chat_a');
+        }else{
+            obj_now = $('#chat-now-'+ids);
+            obj_window = $('#chat_'+ids);
+        }
+        obj_window.hide();
+        if(obj_now.hasClass('chat-active')){
+            if($('.chat-no-active').length &&$('.chat-no-active').length >0) {
+                $('.chat-no-active:first').trigger();
+            }else{
+                $('.chat-windows').hide();
+            }
+        }
+        obj_now.removeClass('chat-active').removeClass('chat-no-active').addClass('chat-no-view');
+        event.stopPropagation();
     }
     // 存储用户名到全局变量,握手成功后发送给服务器
     var uuid;
@@ -666,7 +727,7 @@
     var ws = new WebSocket("ws://127.0.0.1:8080");
     ws.onopen = function () {
         var data = "系统消息：建立连接成功";
-        listMsg(data,0);
+        listMsg(data, 0);
     };
 
     /**
@@ -703,18 +764,18 @@
         var data = sender + msg.content;
         let chat_content = msg.content;
         console.log(chat_content.indexOf('@'));
-        if(chat_content.indexOf('@')>=0){
-            var name = chat_content.substring(0,chat_content.indexOf('@'));
-            let deal_chat = chat_content.substring(chat_content.indexOf('@')+1);
-            privateListMsg(deal_chat,sender.substring(0,sender.length-2),name);
-        }else {
+        if (chat_content.indexOf('@') >= 0) {
+            var name = chat_content.substring(0, chat_content.indexOf('@'));
+            let deal_chat = chat_content.substring(chat_content.indexOf('@') + 1);
+            privateListMsg(deal_chat, sender.substring(0, sender.length - 2), name);
+        } else {
             listMsg(data, msg.type);
         }
     };
 
     ws.onerror = function () {
         var data = "系统消息 : 出错了,请退出重试.";
-        listMsg(data,'system');
+        listMsg(data, 'system');
     };
 
     /**
@@ -732,7 +793,7 @@
             return false;
         }
     }
-    function confirm_private(event,obj) {
+    function confirm_private(event, obj) {
         var key_num = event.keyCode;
         if (13 == key_num) {
             let jj = $(obj).parents('.chat-window').find('.chat-people-name');
@@ -756,26 +817,26 @@
     }
 
     function send_private(obj) {
-        var to =$(obj).parents('.chat-window').find('.chat-people-name').text();
+        var to = $(obj).parents('.chat-window').find('.chat-people-name').text();
         var id = $(obj).parents('.chat-window').attr('id');
-        var ids = id.charAt(id.length-1);
+        var ids = id.charAt(id.length - 1);
         console.log(ids);
         var msg_box = $(obj).parents('.chat-window').find('.msg_box_private').get(0);
         var content = msg_box.value;
         console.log(content);
         var reg = new RegExp("\r\n", "g");
         content = content.replace(reg, "");
-        var msg = {'content': to+'@'+content.trim()+uuid+ids, 'type': 'user'};
+        var msg = {'content': to + '@' + content.trim() + uuid + ids, 'type': 'user'};
         sendMsg(msg);
         msg_box.value = '';
         // todo 清除换行符
     }
 
-    function privateListMsg(data,from,to) {
-        console.log(from+"->"+to);
-        var chat_message = data.substring(data.indexOf(':')+1,data.length-2);
-        var from_id = data.charAt(data.length-2);
-        var to_id = data.charAt(data.length-1);
+    function privateListMsg(data, from, to) {
+        console.log(from + "->" + to);
+        var chat_message = data.substring(data.indexOf(':') + 1, data.length - 2);
+        var from_id = data.charAt(data.length - 2);
+        var to_id = data.charAt(data.length - 1);
         var now_time = (new Date()).toLocaleString();
         console.log(data);
         var div_model = `<div class="chat-message">
@@ -792,28 +853,28 @@
                 <div class="chat-message-desc-re">${chat_message}</div>
             </div>
         </div>`;
-        if(from == uname){
-            $('#chat_'+to_id+' main').append(div_model_self);
+        if (from == uname) {
+            $('#chat_' + to_id + ' main').append(div_model_self);
         }
-        if(to == uname){
-            $('#chat_'+from_id+' main').append(div_model);
+        if (to == uname) {
+            $('#chat_' + from_id + ' main').append(div_model);
         }
-        $('.chat-window>main').animate({scrollTop:$(this).height()},300);
+        $('.chat-window>main').animate({scrollTop: $(this).height()}, 300);
     }
     /**
      * 将消息内容添加到输出框中,并将滚动条滚动到最下方
      */
-    function listMsg(data,type) {
-         console.log(data);
+    function listMsg(data, type) {
+        console.log(data);
 //        var msg_list = document.getElementById("msg_list");
 //        var msg = document.createElement("p");
 //
 //        msg.innerHTML = data;
 //        msg_list.appendChild(msg);
 //        msg_list.scrollTop = msg_list.scrollHeight;
-        var name = data.substring(0,data.indexOf(':'));
+        var name = data.substring(0, data.indexOf(':'));
         var now_time = (new Date()).toLocaleString();
-        var chat_message = data.substring(data.indexOf(':')+1);
+        var chat_message = data.substring(data.indexOf(':') + 1);
         var div_model = `<div class="chat-message">
             <div><img src="{{asset('img/ww.jpg')}}" alt=""></div>
             <div class="chat-message-text">
@@ -831,17 +892,17 @@
         var div_model_system = `<div class="chat-state-mes">${data}</div>`;
 
 
-        if(name == uname){
+        if (name == uname) {
             $('#chat_a main').append(div_model_self);
-        }else {
-            if(type != 'user'){
+        } else {
+            if (type != 'user') {
 
                 $('#chat_a main').append(div_model_system);
-            }else {
+            } else {
                 $('#chat_a main').append(div_model);
             }
         }
-        $('.chat-window>main').animate({scrollTop:$(this).height()},300);
+        $('.chat-window>main').animate({scrollTop: $(this).height()}, 300);
     }
 
     /**
@@ -865,8 +926,7 @@
 //            user.innerHTML = name_list[index];
 //            user_list.appendChild(user);
 //            console.log(index+name_list[index]+uname);
-            if(name_list[index] == uname)
-            {
+            if (name_list[index] == uname) {
                 uuid = index;
                 continue;
             }
@@ -910,10 +970,10 @@
             </div>
         </footer>
     </div>`;
-            var chat_now = `<div class="chat-now chat-now-use" id="chat-now-${index}" onclick="tab_chat_window(this)">
+            var chat_now = `<div class="chat-now chat-now-use chat-no-active" id="chat-now-${index}" onclick="tab_chat_window(this)">
             <div><img src="{{asset('img/ww.jpg')}}" alt=""></div>
             <div><span class="chat-people-name">${chat_name}</span></div>
-            <div><span class="fa fa-times-circle"></span></div>
+            <div><span class="fa fa-times-circle" onclick="close_now_window(this,event)"></span></div>
         </div>`;
 //            $('.friend').append(friend_model);
 //            let new_window = $('#chat_0').clone(true);
@@ -926,14 +986,15 @@
 //            new_tool_bar.find('.chat-people-name').text(name_list[index]);
             $('.chat-window-toolbar').append(chat_now);
             $('.friend').append(friend_model);
-
+            $('#common-chat-a').removeClass('chat-no-view').removeClass('chat-no-active').addClass('chat-active');
+            $('#chat_a').show();
 //            $('#chat-now-'+num+' .chat-people-name').text(name_list[index]);
 //            $('#chat_'+num+' .chat-people-name').text(name_list[index]);
         }
         var change = type == 'login' ? '上线' : '下线';
 
         var data = '系统消息: ' + user_name + ' 已' + change;
-        listMsg(data,0);
+        listMsg(data, 0);
     }
 
     /**
